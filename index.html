@@ -1,0 +1,33 @@
+<html>
+<head>
+    <script type='text/javascript' src='//code.jquery.com/jquery-2.1.0.js'></script>
+     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<style type="text/css">
+.panel{
+	width: 500px!important;
+	position: relative;
+	top: 10px;
+}
+.panel-heading{
+	box-shadow: 0px 4px 3px -4px #000!important;
+}
+</style>
+</body>
+
+<script type="text/javascript">
+$.getJSON( "test.json", function( data ) {
+  var items = [];
+  $.each( data, function( key, val ) {
+  	var link = (val.indexOf('http') > -1) ? '<a href="' + val + '">' + val + '</a>' : val;
+    items.push('<div class="panel panel-default"><div class="panel-heading">' + key + '</div><div class="panel-body">' + link + '</li></div></div>');
+    });
+ 
+  $( "<ol/>", {
+    "class": "my-new-list",
+    html: items.join( "" )
+  }).fadeIn(900).appendTo( "body" );
+});
+</script>
+</html>
